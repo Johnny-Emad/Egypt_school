@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مصر في عيون طلابها</title>
+
+  <!-- Bootstrap 5 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Google Fonts Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       DESIGN TOKENS — ألوان علم مصر
+    ══════════════════════════════════════════ */
+    :root {
+      --red:          #ce1126;
+      --red-dark:     #a50d1e;
+      --black:        #1a1a1a;
+      --gold:         #c09000;
+      --gold-light:   #e8b800;
+      --white:        #ffffff;
+      --bg:           #f9f5ee;
+      --card-bg:      #ffffff;
+      --text-dark:    #1a1a1a;
+      --text-muted:   #6b7280;
+      --border:       #e5dece;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,.09);
+      --shadow-hover: 0 12px 36px rgba(0,0,0,.16);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #f0ece3; }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 10px; }
+
+    /* ══════════════════════════════════════════
+       EGYPT FLAG STRIPE (top)
+    ══════════════════════════════════════════ */
+    .flag-stripe {
+      display: flex;
+      height: 6px;
+    }
+    .flag-stripe .s1 { flex: 1; background: var(--red); }
+    .flag-stripe .s2 { flex: 1; background: #fff; }
+    .flag-stripe .s3 { flex: 1; background: var(--black); }
+
+    /* ══════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════ */
+    .navbar {
+      background: var(--black);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 16px rgba(0,0,0,.35);
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .brand-flag {
+      display: flex;
+      flex-direction: column;
+      width: 32px;
+      height: 22px;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+    .brand-flag span { flex: 1; }
+    .brand-flag .r { background: var(--red); }
+    .brand-flag .w { background: #fff; }
+    .brand-flag .b { background: var(--black); }
+    .brand-text {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      line-height: 1.2;
+    }
+    .brand-text small {
+      display: block;
+      font-size: .68rem;
+      color: rgba(255,255,255,.45);
+      font-weight: 400;
+    }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-links a {
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 500;
+      padding: 7px 13px;
+      border-radius: 8px;
+      transition: background .2s, color .2s;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
+    @media (max-width: 576px) { .nav-links { display: none; } }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.72) 0%, rgba(26,10,5,.6) 100%),
+        url('imgs/hero.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 90px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+    }
+    /* subtle pattern overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 34px 34px;
+      pointer-events: none;
+    }
+    /* gold accent line */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold-light), var(--red));
+    }
+    .hero-content { position: relative; z-index: 1; width: 100%; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(232,184,0,.15);
+      border: 1px solid rgba(232,184,0,.45);
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: .83rem;
+      padding: 5px 18px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(4px);
+      animation: fadeDown .6s ease both;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.2;
+      animation: fadeDown .7s .1s ease both;
+      text-shadow: 0 2px 12px rgba(0,0,0,.4);
+    }
+    .hero h1 .gold { color: var(--gold-light); }
+    .hero h1 .red  { color: #ff6b6b; }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.82);
+      max-width: 600px;
+      margin: 16px auto 30px;
+      line-height: 1.7;
+      animation: fadeDown .7s .2s ease both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown .7s .3s ease both;
+    }
+    .btn-hero-red {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s, transform .2s, box-shadow .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-hero-red:hover {
+      background: var(--red-dark);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(206,17,38,.45);
+    }
+    .btn-hero-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.45);
+      padding: 11px 28px;
+      border-radius: 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-hero-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); color: #fff; }
+
+
+    /* ══════════════════════════════════════════
+       STATS
+    ══════════════════════════════════════════ */
+    .stats-bar {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      padding: 26px 0;
+    }
+    .stat-item { text-align: center; padding: 0 16px; }
+    .stat-item + .stat-item { border-right: 1px solid var(--border); }
+    .stat-number { font-size: 2rem; font-weight: 900; color: var(--red); line-height: 1; }
+    .stat-number span { color: var(--gold); }
+    .stat-label  { font-size: .82rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ══════════════════════════════════════════
+       SECTION TITLE
+    ══════════════════════════════════════════ */
+    .section-title { text-align: center; margin-bottom: 42px; }
+    .pre-label {
+      display: inline-block;
+      color: var(--red);
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .section-title h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--black);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -9px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 55px; height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      border-radius: 2px;
+    }
+    .section-title p { color: var(--text-muted); margin-top: 18px; font-size: .97rem; }
+
+    /* ══════════════════════════════════════════
+       PDF CARDS
+    ══════════════════════════════════════════ */
+    .pdf-section { padding: 70px 0; }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .filter-tab {
+      padding: 7px 18px;
+      border-radius: 50px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      color: var(--text-muted);
+      font-family: 'Tajawal', sans-serif;
+      font-size: .87rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-tab.active, .filter-tab:hover {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .pdf-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px 22px 20px;
+      height: 100%;
+      transition: transform .28s, box-shadow .28s;
+      border-top: 4px solid var(--red);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .pdf-card::before {
+      content: '';
+      position: absolute;
+      top: -50px; left: -50px;
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: rgba(206,17,38,.04);
+    }
+    .pdf-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-hover); }
+
+    /* accent per card */
+    .pdf-card.ca { border-color: #ce1126; } .pdf-card.ca .icon-wrap { background: #fde8eb; color: #ce1126; }
+    .pdf-card.cb { border-color: #b8860b; } .pdf-card.cb .icon-wrap { background: #fef5de; color: #b8860b; }
+    .pdf-card.cc { border-color: #2d6a4f; } .pdf-card.cc .icon-wrap { background: #e0f2e9; color: #2d6a4f; }
+    .pdf-card.cd { border-color: #1a3a6b; } .pdf-card.cd .icon-wrap { background: #e8edf8; color: #1a3a6b; }
+    .pdf-card.ce { border-color: #6a4c93; } .pdf-card.ce .icon-wrap { background: #f0ebf8; color: #6a4c93; }
+    .pdf-card.cf { border-color: #457b9d; } .pdf-card.cf .icon-wrap { background: #e8f2f8; color: #457b9d; }
+    .pdf-card.cg { border-color: #e76f51; } .pdf-card.cg .icon-wrap { background: #fceee9; color: #e76f51; }
+    .pdf-card.ch { border-color: #2a9d8f; } .pdf-card.ch .icon-wrap { background: #e0f4f1; color: #2a9d8f; }
+
+    .icon-wrap {
+      width: 54px; height: 54px;
+      border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+    .pdf-card h5 { font-weight: 800; font-size: 1.05rem; margin-bottom: 5px; color: var(--text-dark); }
+    .card-desc   { font-size: .85rem; color: var(--text-muted); flex: 1; margin-bottom: 16px; line-height: 1.6; }
+
+    /* search */
+    .pdf-search-wrap { position: relative; margin-bottom: 8px; }
+    .pdf-search-wrap input {
+      width: 100%;
+      padding: 9px 38px 9px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: .9rem;
+      color: var(--text-dark);
+      background: var(--bg);
+      transition: border-color .2s, background .2s;
+      direction: rtl;
+    }
+    .pdf-search-wrap input:focus {
+      outline: none;
+      border-color: var(--red);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(206,17,38,.08);
+    }
+    .pdf-search-wrap .s-icon {
+      position: absolute;
+      left: 11px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: .9rem;
+      pointer-events: none;
+    }
+    .pdf-search-wrap input::placeholder { color: #b8b0a0; }
+
+    .search-result {
+      font-size: .78rem;
+      color: var(--text-muted);
+      min-height: 18px;
+      margin-bottom: 8px;
+      transition: color .2s;
+    }
+    .search-result.found    { color: #2a9d8f; font-weight: 600; }
+    .search-result.notfound { color: var(--red); }
+
+    /* open btn */
+    .btn-pdf-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      padding: 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+      font-size: .92rem;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      text-decoration: none;
+    }
+    .btn-pdf-open:hover { background: var(--red-dark); color: #fff; transform: translateY(-1px); }
+    .cb .btn-pdf-open { background: #b8860b; } .cb .btn-pdf-open:hover { background: #9a7009; }
+    .cc .btn-pdf-open { background: #2d6a4f; } .cc .btn-pdf-open:hover { background: #1f4d38; }
+    .cd .btn-pdf-open { background: #1a3a6b; } .cd .btn-pdf-open:hover { background: #102448; }
+    .ce .btn-pdf-open { background: #6a4c93; } .ce .btn-pdf-open:hover { background: #58397d; }
+    .cf .btn-pdf-open { background: #457b9d; } .cf .btn-pdf-open:hover { background: #35607d; }
+    .cg .btn-pdf-open { background: #e76f51; } .cg .btn-pdf-open:hover { background: #c85a3e; }
+    .ch .btn-pdf-open { background: #2a9d8f; } .ch .btn-pdf-open:hover { background: #21867a; }
+
+    /* ══════════════════════════════════════════
+       ABOUT EGYPT STRIP
+    ══════════════════════════════════════════ */
+    .egypt-strip {
+      background: linear-gradient(135deg, var(--black) 0%, #2a1a0a 100%);
+      padding: 65px 0;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .egypt-strip::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(232,184,0,.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .egypt-strip .section-title h2 { color: #fff; }
+    .egypt-strip .section-title h2::after { background: linear-gradient(90deg, var(--gold-light), var(--red)); }
+    .egypt-strip .section-title p  { color: rgba(255,255,255,.6); }
+    .egypt-strip .pre-label        { color: var(--gold-light); }
+
+    .fact-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      text-align: center;
+      transition: background .25s, transform .25s;
+      position: relative; z-index: 1;
+    }
+    .fact-card:hover { background: rgba(255,255,255,.12); transform: translateY(-5px); }
+    .fact-icon {
+      font-size: 2.2rem;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .fact-card h5 { font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 8px; }
+    .fact-card p  { font-size: .85rem; color: rgba(255,255,255,.6); line-height: 1.65; }
+
+    /* ══════════════════════════════════════════
+       GALLERY
+    ══════════════════════════════════════════ */
+    .gallery-section { padding: 70px 0; background: #f0ece3; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 992px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+      }
+    }
+    @media (max-width: 576px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .35s;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: rgba(206,17,38,.5);
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.5rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* lightbox */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.9);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw; max-height: 85vh;
+      border-radius: 10px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.6);
+      animation: zoomIn .25s ease;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(.85); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; left: 20px;
+      color: #fff; font-size: 1.7rem; cursor: pointer;
+      background: rgba(255,255,255,.1);
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s; border: none;
+    }
+    .lightbox-close:hover { background: rgba(206,17,38,.6); }
+
+    /* ══════════════════════════════════════════
+       CTA
+    ══════════════════════════════════════════ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--red) 0%, #a50d1e 100%);
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .cta-section h2 { font-size: clamp(1.5rem,3vw,2.1rem); font-weight: 900; color: #fff; margin-bottom: 10px; position: relative; }
+    .cta-section p  { color: rgba(255,255,255,.75); font-size: 1rem; margin-bottom: 24px; position: relative; }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center; gap: 8px;
+      background: var(--gold-light);
+      color: var(--black);
+      border: none;
+      padding: 13px 32px;
+      border-radius: 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      text-decoration: none;
+      position: relative;
+    }
+    .btn-cta:hover { background: #fff; color: var(--red); transform: translateY(-2px); }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer { background: var(--black); color: rgba(255,255,255,.5); padding: 36px 0 16px; }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap; gap: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 16px;
+    }
+    .footer-brand-name {
+      font-size: 1.2rem; font-weight: 900;
+      color: var(--gold-light);
+    }
+    .footer-brand-name span { color: #fff; }
+    .footer-brand p { font-size: .82rem; color: rgba(255,255,255,.4); margin-top: 6px; line-height: 1.6; }
+    .footer-links h6 { color: #fff; font-weight: 700; font-size: .88rem; margin-bottom: 10px; }
+    .footer-links a  { display: block; color: rgba(255,255,255,.45); text-decoration: none; font-size: .83rem; margin-bottom: 6px; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom { text-align: center; font-size: .8rem; }
+    .footer-bottom span { color: var(--gold-light); font-weight: 700; }
+
+    /* ══════════════════════════════════════════
+       ANIMATIONS & UTILS
+    ══════════════════════════════════════════ */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    #backToTop {
+      position: fixed; bottom: 26px; left: 26px;
+      width: 44px; height: 44px;
+      background: var(--red);
+      color: #fff; border: none; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(206,17,38,.4);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      z-index: 999;
+    }
+    #backToTop.show { opacity: 1; pointer-events: auto; }
+    #backToTop:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+<!-- flag stripe -->
+<div class="flag-stripe"><div class="s1"></div><div class="s2"></div><div class="s3"></div></div>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a class="navbar-brand" href="#">
+        <div class="brand-flag">
+          <span class="r"></span><span class="w"></span><span class="b"></span>
+        </div>
+        <div class="brand-text">
+          مصر في عيون طلابها
+          <small>مسابقة طلابية وطنية · 2026</small>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#pdf-section"><i class="bi bi-search me-1"></i>الأبحاث</a>
+        <a href="#facts-section"><i class="bi bi-info-circle me-1"></i>عن مصر</a>
+        <a href="#gallery-section"><i class="bi bi-images me-1"></i>الصور</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <i class="bi bi-trophy-fill"></i>
+      مسابقة · مصر في عيون طلابها · 2026
+    </div>
+    <h1>
+      <span class="gold">مصر</span> في عيون<br>
+      <span class="red">طلابها</span>
+    </h1>
+    <p>
+      رحلة استكشافية في تاريخ مصر وحضارتها وجغرافيتها وثقافتها<br>
+      من خلال أبحاث وأعمال الطلاب المشاركين في المسابقة
+    </p>
+    <div class="hero-btns">
+      <a href="#pdf-section" class="btn-hero-red">
+        <i class="bi bi-file-earmark-pdf-fill"></i> استعرض الأبحاث
+      </a>
+      <a href="#gallery-section" class="btn-hero-outline">
+        <i class="bi bi-images"></i> معرض الصور
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STATS
+══════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="row g-3 text-center">
+      <div class="col-6 col-md-3"><div class="stat-item">
+        <div class="stat-number">8<span>+</span></div>
+        <div class="stat-label">بحث ومشروع</div>
+      </div></div>
+      <div class="col-6 col-md-3"><div class="stat-item">
+        <div class="stat-number">7000<span>+</span></div>
+        <div class="stat-label">سنة من الحضارة</div>
+      </div></div>
+      <div class="col-6 col-md-3"><div class="stat-item">
+        <div class="stat-number">14<span>+</span></div>
+        <div class="stat-label">صورة توثيقية</div>
+      </div></div>
+      <div class="col-6 col-md-3"><div class="stat-item">
+        <div class="stat-number">🇪🇬</div>
+        <div class="stat-label">بلدنا الحبيبة</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PDF SECTION
+══════════════════════════════════════════ -->
+<section class="pdf-section" id="pdf-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="pre-label"><i class="bi bi-file-earmark-pdf-fill me-1"></i> أعمال المسابقة</div>
+      <h2>الأبحاث والمشاريع</h2>
+      <p>استعرض أبحاث المسابقة — ابحث بكلمة مفتاحية ثم افتح الملف</p>
+    </div>
+
+    <!-- filter tabs -->
+    <div class="filter-tabs reveal">
+      <button class="filter-tab active" onclick="filterCards('all',this)">الكل</button>
+      <button class="filter-tab" onclick="filterCards('تاريخ',this)">تاريخ وحضارة</button>
+      <button class="filter-tab" onclick="filterCards('جغرافيا',this)">جغرافيا وطبيعة</button>
+      <button class="filter-tab" onclick="filterCards('ثقافة',this)">ثقافة وفنون</button>
+      <button class="filter-tab" onclick="filterCards('اقتصاد',this)">اقتصاد وتنمية</button>
+    </div>
+
+    <div class="row g-4" id="pdfGrid">
+
+      <!-- CARD 1 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="تاريخ">
+        <div class="pdf-card ca">
+          <div class="icon-wrap"><i class="bi bi-bank2"></i></div>
+          <h5>الحضارة المصرية القديمة</h5>
+          <p class="card-desc">الفراعنة، الأهرامات، الكتابة الهيروغليفية، وأسرار الحضارة الأعرق في التاريخ</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s1" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r1')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r1"></div>
+          <a id="link1" href="PDF_1_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="جغرافيا">
+        <div class="pdf-card cb">
+          <div class="icon-wrap"><i class="bi bi-water"></i></div>
+          <h5>نهر النيل وأهميته</h5>
+          <p class="card-desc">شريان الحياة — تاريخ النيل وأثره على الزراعة والحضارة والمجتمع المصري عبر العصور</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s2" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r2')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r2"></div>
+          <a id="link2" href="PDF_2_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="ثقافة">
+        <div class="pdf-card cc">
+          <div class="icon-wrap"><i class="bi bi-palette-fill"></i></div>
+          <h5>الفن والثقافة المصرية</h5>
+          <p class="card-desc">الموسيقى، السينما، الأدب، والفنون الشعبية — مصر حاضرة الثقافة العربية والعالمية</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s3" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r3')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r3"></div>
+          <a id="link3" href="PDF_3_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="تاريخ">
+        <div class="pdf-card cd">
+          <div class="icon-wrap"><i class="bi bi-shield-fill"></i></div>
+          <h5>مصر عبر العصور</h5>
+          <p class="card-desc">من الفراعنة إلى اليونان والرومان والعرب والعثمانيين — رحلة مصر عبر التاريخ</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s4" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r4')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r4"></div>
+          <a id="link4" href="PDF_4_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="جغرافيا">
+        <div class="pdf-card ce">
+          <div class="icon-wrap"><i class="bi bi-map-fill"></i></div>
+          <h5>جغرافية مصر وتضاريسها</h5>
+          <p class="card-desc">الصحراء والواحات والسواحل والجبال — التنوع الجغرافي الفريد لأرض الكنانة</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s5" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r5')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r5"></div>
+          <a id="link5" href="PDF_5_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="اقتصاد">
+        <div class="pdf-card cf">
+          <div class="icon-wrap"><i class="bi bi-graph-up-arrow"></i></div>
+          <h5>الاقتصاد والتنمية</h5>
+          <p class="card-desc">السياحة والصناعة والزراعة وقناة السويس — ركائز الاقتصاد المصري ومشاريع التنمية</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s6" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r6')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r6"></div>
+          <a id="link6" href="PDF_6_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="ثقافة">
+        <div class="pdf-card cg">
+          <div class="icon-wrap"><i class="bi bi-people-fill"></i></div>
+          <h5>المجتمع والعادات والتقاليد</h5>
+          <p class="card-desc">أعياد مصر وفلكلورها وعاداتها الأصيلة — روح الشعب المصري وموروثه الشعبي</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s7" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r7')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r7"></div>
+          <a id="link7" href="PDF_7_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 8 -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="اقتصاد">
+        <div class="pdf-card ch">
+          <div class="icon-wrap"><i class="bi bi-building-fill"></i></div>
+          <h5>مصر الحديثة ورؤية 2030</h5>
+          <p class="card-desc">العاصمة الإدارية، مشاريع البنية التحتية، والتطور التكنولوجي في مصر الجديدة</p>
+          <div class="pdf-search-wrap">
+            <input type="text" id="s8" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r8')" />
+            <i class="bi bi-search s-icon"></i>
+          </div>
+          <div class="search-result" id="r8"></div>
+          <a id="link8" href="PDF_8_URL" target="_blank" class="btn-pdf-open">
+            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FACTS ABOUT EGYPT
+══════════════════════════════════════════ -->
+<section class="egypt-strip" id="facts-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="pre-label">حقائق وأرقام</div>
+      <h2>لماذا مصر أم الدنيا؟</h2>
+      <p>أرض الكنانة — حضارة وتاريخ وعطاء لا ينضب</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="fact-card">
+          <div class="fact-icon"><i class="bi bi-building-fill-check"></i></div>
+          <h5>أقدم حضارة</h5>
+          <p>أكثر من 7000 سنة من الحضارة المتواصلة، وبناء الأهرامات التي حيّرت العالم</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="fact-card">
+          <div class="fact-icon"><i class="bi bi-water"></i></div>
+          <h5>نهر النيل</h5>
+          <p>أطول نهر في العالم يعبر قلب مصر ليمنحها الحياة والخضرة والخيرات</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="fact-card">
+          <div class="fact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <h5>موقع استراتيجي</h5>
+          <p>ملتقى القارات الثلاث وبوابة الشرق — موقع جعلها محور التجارة والتاريخ</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="fact-card">
+          <div class="fact-icon"><i class="bi bi-stars"></i></div>
+          <h5>أعجوبة العالم</h5>
+          <p>الأهرامات الوحيدة من عجائب الدنيا السبع القديمة التي لا تزال قائمة حتى اليوم</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     GALLERY
+══════════════════════════════════════════ -->
+<section class="gallery-section" id="gallery-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="pre-label"><i class="bi bi-images me-1"></i> توثيق مصور</div>
+      <h2>معرض الصور</h2>
+      <p>لقطات من الفعاليات والأنشطة المصاحبة للمسابقة</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" onclick="openLightbox('imgs/img1.jpeg')"><img src="imgs/img1.jpeg" alt="صورة 1" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img2.jpeg')"><img src="imgs/img2.jpeg" alt="صورة 2" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img3.jpeg')"><img src="imgs/img3.jpeg" alt="صورة 3" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img4.jpeg')"><img src="imgs/img4.jpeg" alt="صورة 4" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img5.jpeg')"><img src="imgs/img5.jpeg" alt="صورة 5" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img6.jpeg')"><img src="imgs/img6.jpeg" alt="صورة 6" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img7.jpeg')"><img src="imgs/img7.jpeg" alt="صورة 7" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img8.jpeg')"><img src="imgs/img8.jpeg" alt="صورة 8" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img9.jpeg')"><img src="imgs/img9.jpeg" alt="صورة 9" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img10.jpeg')"><img src="imgs/img10.jpeg" alt="صورة 10" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img11.jpeg')"><img src="imgs/img11.jpeg" alt="صورة 11" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img12.jpeg')"><img src="imgs/img12.jpeg" alt="صورة 12" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img13.jpeg')"><img src="imgs/img13.jpeg" alt="صورة 13" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="gallery-item" onclick="openLightbox('imgs/img14.jpeg')"><img src="imgs/img14.jpeg" alt="صورة 14" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()"><i class="bi bi-x-lg"></i></button>
+  <img id="lightboxImg" src="" alt="صورة مكبرة" onclick="event.stopPropagation()" />
+</div>
+
+<!-- ══════════════════════════════════════════
+     CTA
+══════════════════════════════════════════ -->
+<section class="cta-section reveal">
+  <div class="container">
+    <h2><i class="bi bi-trophy-fill me-2"></i>مصر تستحق كل فخر واعتزاز</h2>
+    <p>شارك في المسابقة وأظهر حبك لأرض الكنانة</p>
+    <a href="#pdf-section" class="btn-cta">
+      <i class="bi bi-file-earmark-pdf-fill"></i> استعرض الأبحاث
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">🇪🇬 <span>مصر</span> في عيون طلابها</div>
+        <p>مسابقة طلابية وطنية للتعريف بتاريخ<br>وحضارة وجغرافية مصر العظيمة · 2026</p>
+      </div>
+      <div class="footer-links">
+        <h6>روابط سريعة</h6>
+        <a href="#pdf-section"><i class="bi bi-file-earmark-pdf me-1"></i>الأبحاث والمشاريع</a>
+        <a href="#facts-section"><i class="bi bi-info-circle me-1"></i>عن مصر</a>
+        <a href="#gallery-section"><i class="bi bi-images me-1"></i>معرض الصور</a>
+      </div>
+      <div class="footer-links">
+        <h6>موضوعات المسابقة</h6>
+        <a href="#pdf-section">الحضارة القديمة</a>
+        <a href="#pdf-section">نهر النيل</a>
+        <a href="#pdf-section">الجغرافيا والتضاريس</a>
+        <a href="#pdf-section">مصر الحديثة</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      جميع الحقوق محفوظة &copy; 2026 &mdash;
+      <span>مصر في عيون طلابها</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="للأعلى">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ════════════════════════════════════════════════════
+   روابط ملفات الـ PDF — غيّر هذه المتغيرات فقط
+   ════════════════════════════════════════════════════ */
+const PDF_1_URL = "pdfs/ancient-egypt.pdf";       // الحضارة المصرية القديمة
+const PDF_2_URL = "pdfs/nile.pdf";                // نهر النيل
+const PDF_3_URL = "pdfs/arts-culture.pdf";        // الفن والثقافة
+const PDF_4_URL = "pdfs/history-eras.pdf";        // مصر عبر العصور
+const PDF_5_URL = "pdfs/geography.pdf";           // الجغرافيا والتضاريس
+const PDF_6_URL = "pdfs/economy.pdf";             // الاقتصاد والتنمية
+const PDF_7_URL = "pdfs/society-traditions.pdf";  // المجتمع والعادات
+const PDF_8_URL = "pdfs/modern-egypt.pdf";        // مصر الحديثة ورؤية 2030
+/* ════════════════════════════════════════════════════ */
+
+// تطبيق الروابط تلقائياً
+(function() {
+  const links = [PDF_1_URL,PDF_2_URL,PDF_3_URL,PDF_4_URL,PDF_5_URL,PDF_6_URL,PDF_7_URL,PDF_8_URL];
+  links.forEach((url, i) => {
+    const el = document.getElementById('link' + (i + 1));
+    if (el) el.href = url;
+  });
+})();
+
+/* كلمات مفتاحية لكل بحث */
+const KEYWORDS = {
+  s1: ["فرعون","هيروغليفي","أهرام","توت","رمسيس","كليوباترا","بردي","معبد","مومياء","سفينكس","خوفو"],
+  s2: ["نيل","فيضان","أسوان","دلتا","مياه","فلاحة","ري","السد العالي","مصب","نبع"],
+  s3: ["موسيقى","سينما","أدب","فنون","نجيب","أم كلثوم","عبدالوهاب","تراث","شعبي","رسم"],
+  s4: ["فاطمي","أيوبي","مملوك","عثماني","إسلام","يونان","روماني","بطليموس","عصر","دولة"],
+  s5: ["صحراء","سيناء","واحة","ساحل","جبل","تضاريس","مناخ","أرض","بيئة","خريطة"],
+  s6: ["سياحة","قناة","صناعة","زراعة","بترول","صادرات","استثمار","تنمية","ميناء","اقتصاد"],
+  s7: ["رمضان","شم النسيم","زفة","تقليد","عادة","فلكلور","أكلة","عيد","مولد","احتفال"],
+  s8: ["عاصمة","إدارية","مشروع","2030","رؤية","طاقة","تكنولوجيا","مترو","طريق","تطوير"]
+};
+
+function handleSearch(input, resultId) {
+  const val = input.value.trim().toLowerCase();
+  const result = document.getElementById(resultId);
+  const idx = resultId.replace('r','');
+  const kws = KEYWORDS['s'+idx] || [];
+  if (!val) { result.textContent=''; result.className='search-result'; return; }
+  const found = kws.some(k => k.includes(val) || val.includes(k));
+  if (found) {
+    result.textContent = '✓ الكلمة موجودة في البحث';
+    result.className = 'search-result found';
+  } else {
+    result.textContent = '← افتح الملف للبحث بداخله';
+    result.className = 'search-result notfound';
+  }
+}
+
+function filterCards(cat, btn) {
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pdf-col').forEach(col => {
+    col.style.display = (cat==='all' || col.dataset.cat===cat) ? '' : 'none';
+  });
+}
+
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => { btt.classList.toggle('show', window.scrollY > 300); });
+</script>
+</body>
+</html>
