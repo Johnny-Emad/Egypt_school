@@ -353,73 +353,62 @@
     .pdf-card h5 { font-weight: 800; font-size: 1.05rem; margin-bottom: 5px; color: var(--text-dark); }
     .card-desc   { font-size: .85rem; color: var(--text-muted); flex: 1; margin-bottom: 16px; line-height: 1.6; }
 
-    /* search */
-    .pdf-search-wrap { position: relative; margin-bottom: 8px; }
-    .pdf-search-wrap input {
-      width: 100%;
-      padding: 9px 38px 9px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 9px;
-      font-family: 'Tajawal', sans-serif;
-      font-size: .9rem;
-      color: var(--text-dark);
-      background: var(--bg);
-      transition: border-color .2s, background .2s;
-      direction: rtl;
+    /* card action buttons */
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
     }
-    .pdf-search-wrap input:focus {
-      outline: none;
-      border-color: var(--red);
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(206,17,38,.08);
-    }
-    .pdf-search-wrap .s-icon {
-      position: absolute;
-      left: 11px; top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: .9rem;
-      pointer-events: none;
-    }
-    .pdf-search-wrap input::placeholder { color: #b8b0a0; }
-
-    .search-result {
-      font-size: .78rem;
-      color: var(--text-muted);
-      min-height: 18px;
-      margin-bottom: 8px;
-      transition: color .2s;
-    }
-    .search-result.found    { color: #2a9d8f; font-weight: 600; }
-    .search-result.notfound { color: var(--red); }
-
-    /* open btn */
-    .btn-pdf-open {
+    .btn-pdf-open, .btn-pdf-download {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      width: 100%;
-      background: var(--red);
-      color: #fff;
-      border: none;
+      gap: 6px;
+      flex: 1;
       border-radius: 9px;
-      padding: 10px;
+      padding: 9px 8px;
       font-family: 'Tajawal', sans-serif;
       font-weight: 700;
-      font-size: .92rem;
+      font-size: .87rem;
       cursor: pointer;
-      transition: background .2s, transform .15s;
+      transition: background .2s, transform .15s, box-shadow .15s;
       text-decoration: none;
+      border: none;
     }
-    .btn-pdf-open:hover { background: var(--red-dark); color: #fff; transform: translateY(-1px); }
-    .cb .btn-pdf-open { background: #b8860b; } .cb .btn-pdf-open:hover { background: #9a7009; }
-    .cc .btn-pdf-open { background: #2d6a4f; } .cc .btn-pdf-open:hover { background: #1f4d38; }
-    .cd .btn-pdf-open { background: #1a3a6b; } .cd .btn-pdf-open:hover { background: #102448; }
-    .ce .btn-pdf-open { background: #6a4c93; } .ce .btn-pdf-open:hover { background: #58397d; }
-    .cf .btn-pdf-open { background: #457b9d; } .cf .btn-pdf-open:hover { background: #35607d; }
-    .cg .btn-pdf-open { background: #e76f51; } .cg .btn-pdf-open:hover { background: #c85a3e; }
-    .ch .btn-pdf-open { background: #2a9d8f; } .ch .btn-pdf-open:hover { background: #21867a; }
+    .btn-pdf-open {
+      background: var(--red);
+      color: #fff;
+    }
+    .btn-pdf-open:hover { background: var(--red-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(206,17,38,.3); }
+
+    .btn-pdf-download {
+      background: transparent;
+      color: var(--red);
+      border: 2px solid var(--red);
+    }
+    .btn-pdf-download:hover { background: var(--red); color: #fff; transform: translateY(-1px); }
+
+    /* per-card accent overrides */
+    .cb .btn-pdf-open { background: #b8860b; color: #fff; } .cb .btn-pdf-open:hover { background: #9a7009; }
+    .cb .btn-pdf-download { color: #b8860b; border-color: #b8860b; } .cb .btn-pdf-download:hover { background: #b8860b; color: #fff; }
+
+    .cc .btn-pdf-open { background: #2d6a4f; color: #fff; } .cc .btn-pdf-open:hover { background: #1f4d38; }
+    .cc .btn-pdf-download { color: #2d6a4f; border-color: #2d6a4f; } .cc .btn-pdf-download:hover { background: #2d6a4f; color: #fff; }
+
+    .cd .btn-pdf-open { background: #1a3a6b; color: #fff; } .cd .btn-pdf-open:hover { background: #102448; }
+    .cd .btn-pdf-download { color: #1a3a6b; border-color: #1a3a6b; } .cd .btn-pdf-download:hover { background: #1a3a6b; color: #fff; }
+
+    .ce .btn-pdf-open { background: #6a4c93; color: #fff; } .ce .btn-pdf-open:hover { background: #58397d; }
+    .ce .btn-pdf-download { color: #6a4c93; border-color: #6a4c93; } .ce .btn-pdf-download:hover { background: #6a4c93; color: #fff; }
+
+    .cf .btn-pdf-open { background: #457b9d; color: #fff; } .cf .btn-pdf-open:hover { background: #35607d; }
+    .cf .btn-pdf-download { color: #457b9d; border-color: #457b9d; } .cf .btn-pdf-download:hover { background: #457b9d; color: #fff; }
+
+    .cg .btn-pdf-open { background: #e76f51; color: #fff; } .cg .btn-pdf-open:hover { background: #c85a3e; }
+    .cg .btn-pdf-download { color: #e76f51; border-color: #e76f51; } .cg .btn-pdf-download:hover { background: #e76f51; color: #fff; }
+
+    .ch .btn-pdf-open { background: #2a9d8f; color: #fff; } .ch .btn-pdf-open:hover { background: #21867a; }
+    .ch .btn-pdf-download { color: #2a9d8f; border-color: #2a9d8f; } .ch .btn-pdf-download:hover { background: #2a9d8f; color: #fff; }
 
     /* ══════════════════════════════════════════
        ABOUT EGYPT STRIP
@@ -459,6 +448,104 @@
     }
     .fact-card h5 { font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 8px; }
     .fact-card p  { font-size: .85rem; color: rgba(255,255,255,.6); line-height: 1.65; }
+
+    /* ══════════════════════════════════════════
+       CREDITS SECTION
+    ══════════════════════════════════════════ */
+    .credits-section {
+      background: linear-gradient(135deg, var(--black) 0%, #1e1206 100%);
+      padding: 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .credits-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(232,184,0,.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .credits-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+    /* school badge */
+    .school-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(232,184,0,.1);
+      border: 1px solid rgba(232,184,0,.3);
+      border-radius: 50px;
+      padding: 10px 24px 10px 16px;
+    }
+    .school-badge-icon {
+      width: 40px; height: 40px;
+      background: rgba(232,184,0,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold-light);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .school-badge-text { line-height: 1.25; }
+    .school-badge-name {
+      font-size: .95rem;
+      font-weight: 800;
+      color: var(--gold-light);
+    }
+    .school-badge-sub {
+      font-size: .75rem;
+      color: rgba(255,255,255,.5);
+    }
+    /* credits row */
+    .credits-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 24px;
+    }
+    .credits-group-label {
+      font-size: .72rem;
+      font-weight: 800;
+      color: rgba(255,255,255,.35);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .credits-sep {
+      width: 1px; height: 32px;
+      background: rgba(255,255,255,.12);
+    }
+    @media (max-width: 576px) { .credits-sep { display: none; } }
+    .credits-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 7px 16px;
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background .2s, border-color .2s;
+    }
+    .credits-chip:hover { background: rgba(255,255,255,.13); border-color: rgba(232,184,0,.35); }
+    .credits-chip i { color: var(--gold-light); font-size: .85rem; }
+    .credits-chip.supervisor i { color: rgba(255,255,255,.45); }
+    .credits-chip em {
+      font-style: normal;
+      font-size: .75rem;
+      color: rgba(255,255,255,.45);
+      font-weight: 400;
+    }
 
     /* ══════════════════════════════════════════
        GALLERY
@@ -649,6 +736,7 @@
         </div>
       </a>
       <div class="nav-links">
+        <a href="#credits-section"><i class="bi bi-people-fill me-1"></i>فريق العمل</a>
         <a href="#pdf-section"><i class="bi bi-search me-1"></i>الأبحاث</a>
         <a href="#facts-section"><i class="bi bi-info-circle me-1"></i>عن مصر</a>
         <a href="#gallery-section"><i class="bi bi-images me-1"></i>الصور</a>
@@ -681,6 +769,50 @@
       <a href="#gallery-section" class="btn-hero-outline">
         <i class="bi bi-images"></i> معرض الصور
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CREDITS — فريق العمل
+══════════════════════════════════════════ -->
+<section class="credits-section" id="credits-section">
+  <div class="container">
+    <div class="credits-inner">
+
+      <!-- badge المدرسة -->
+      <div class="school-badge reveal">
+        <div class="school-badge-icon"><i class="bi bi-building-fill-check"></i></div>
+        <div class="school-badge-text">
+          <div class="school-badge-name">مدرسة الشهيد العقيد محمد محمود أبو سريع المتميزة للغات</div>
+          <div class="school-badge-sub">إدارة شرق مدينة نصر التعليمية</div>
+        </div>
+      </div>
+
+      <!-- الصف الأول: الطلاب -->
+      <div class="credits-row reveal">
+        <span class="credits-group-label"><i class="bi bi-stars"></i> إعداد وتنفيذ</span>
+        <div class="credits-sep"></div>
+        <div class="credits-chip">
+          <i class="bi bi-person-fill"></i> جوني عماد
+        </div>
+        <div class="credits-chip">
+          <i class="bi bi-person-fill"></i> عمر عبد الغزيز
+        </div>
+        <div class="credits-sep"></div>
+        <span class="credits-group-label"><i class="bi bi-award-fill"></i> تحت إشراف</span>
+        <div class="credits-sep"></div>
+        <div class="credits-chip supervisor">
+          <i class="bi bi-person-badge-fill"></i> أ. سحر بيومي <em>— مديرة المدرسة</em>
+        </div>
+        <div class="credits-chip supervisor">
+          <i class="bi bi-person-badge-fill"></i> أ. سوزان
+        </div>
+        <div class="credits-chip supervisor">
+          <i class="bi bi-person-badge-fill"></i> أ. نور
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -719,153 +851,153 @@
     <div class="section-title reveal">
       <div class="pre-label"><i class="bi bi-file-earmark-pdf-fill me-1"></i> أعمال المسابقة</div>
       <h2>الأبحاث والمشاريع</h2>
-      <p>استعرض أبحاث المسابقة — ابحث بكلمة مفتاحية ثم افتح الملف</p>
+      <p>استعرض أبحاث المسابقة — اضغط على عرض لقراءة البحث أو تحميل للحفظ</p>
     </div>
 
-    <!-- filter tabs -->
     <div class="filter-tabs reveal">
       <button class="filter-tab active" onclick="filterCards('all',this)">الكل</button>
-      <button class="filter-tab" onclick="filterCards('تاريخ',this)">تاريخ وحضارة</button>
-      <button class="filter-tab" onclick="filterCards('جغرافيا',this)">جغرافيا وطبيعة</button>
-      <button class="filter-tab" onclick="filterCards('ثقافة',this)">ثقافة وفنون</button>
-      <button class="filter-tab" onclick="filterCards('اقتصاد',this)">اقتصاد وتنمية</button>
+      <button class="filter-tab" onclick="filterCards('اقتصاد',this)">اقتصاد</button>
+      <button class="filter-tab" onclick="filterCards('بنية تحتية',this)">بنية تحتية</button>
+      <button class="filter-tab" onclick="filterCards('خدمات',this)">خدمات</button>
     </div>
+
+
 
     <div class="row g-4" id="pdfGrid">
 
-      <!-- CARD 1 -->
-      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="تاريخ">
-        <div class="pdf-card ca">
-          <div class="icon-wrap"><i class="bi bi-bank2"></i></div>
-          <h5>الحضارة المصرية القديمة</h5>
-          <p class="card-desc">الفراعنة، الأهرامات، الكتابة الهيروغليفية، وأسرار الحضارة الأعرق في التاريخ</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s1" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r1')" />
-            <i class="bi bi-search s-icon"></i>
-          </div>
-          <div class="search-result" id="r1"></div>
-          <a id="link1" href="PDF_1_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
-        </div>
-      </div>
-
-      <!-- CARD 2 -->
-      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="جغرافيا">
-        <div class="pdf-card cb">
-          <div class="icon-wrap"><i class="bi bi-water"></i></div>
-          <h5>نهر النيل وأهميته</h5>
-          <p class="card-desc">شريان الحياة — تاريخ النيل وأثره على الزراعة والحضارة والمجتمع المصري عبر العصور</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s2" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r2')" />
-            <i class="bi bi-search s-icon"></i>
-          </div>
-          <div class="search-result" id="r2"></div>
-          <a id="link2" href="PDF_2_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="ثقافة">
-        <div class="pdf-card cc">
-          <div class="icon-wrap"><i class="bi bi-palette-fill"></i></div>
-          <h5>الفن والثقافة المصرية</h5>
-          <p class="card-desc">الموسيقى، السينما، الأدب، والفنون الشعبية — مصر حاضرة الثقافة العربية والعالمية</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s3" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r3')" />
-            <i class="bi bi-search s-icon"></i>
-          </div>
-          <div class="search-result" id="r3"></div>
-          <a id="link3" href="PDF_3_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
-        </div>
-      </div>
-
-      <!-- CARD 4 -->
-      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="تاريخ">
-        <div class="pdf-card cd">
-          <div class="icon-wrap"><i class="bi bi-shield-fill"></i></div>
-          <h5>مصر عبر العصور</h5>
-          <p class="card-desc">من الفراعنة إلى اليونان والرومان والعرب والعثمانيين — رحلة مصر عبر التاريخ</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s4" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r4')" />
-            <i class="bi bi-search s-icon"></i>
-          </div>
-          <div class="search-result" id="r4"></div>
-          <a id="link4" href="PDF_4_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
-        </div>
-      </div>
-
-      <!-- CARD 5 -->
-      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="جغرافيا">
-        <div class="pdf-card ce">
-          <div class="icon-wrap"><i class="bi bi-map-fill"></i></div>
-          <h5>جغرافية مصر وتضاريسها</h5>
-          <p class="card-desc">الصحراء والواحات والسواحل والجبال — التنوع الجغرافي الفريد لأرض الكنانة</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s5" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r5')" />
-            <i class="bi bi-search s-icon"></i>
-          </div>
-          <div class="search-result" id="r5"></div>
-          <a id="link5" href="PDF_5_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
-        </div>
-      </div>
-
-      <!-- CARD 6 -->
+      <!-- CARD 1 — الزراعة -->
       <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="اقتصاد">
+        <div class="pdf-card ca">
+          <div class="icon-wrap"><i class="bi bi-tree-fill"></i></div>
+          <h5>الزراعة واستصلاح الأراضي</h5>
+          <p class="card-desc">مشاريع استصلاح الأراضي وتطوير القطاع الزراعي ودوره في تحقيق الأمن الغذائي لمصر</p>
+          <div class="card-actions">
+            <a href="pdf/الزراعة واستصلاح الصحراء.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/الزراعة واستصلاح الصحراء.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 — الصحة -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="خدمات">
+        <div class="pdf-card cb">
+          <div class="icon-wrap"><i class="bi bi-heart-pulse-fill"></i></div>
+          <h5>الصحة</h5>
+          <p class="card-desc">المنظومة الصحية في مصر — المستشفيات والتأمين الصحي الشامل ومشاريع التطوير الطبي</p>
+          <div class="card-actions">
+            <a href="pdf/الصحة.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/الصحة.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 — الصناعة -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="اقتصاد">
+        <div class="pdf-card cc">
+          <div class="icon-wrap"><i class="bi bi-gear-wide-connected"></i></div>
+          <h5>الصناعة</h5>
+          <p class="card-desc">القطاع الصناعي المصري — المصانع الكبرى والمناطق الصناعية ودورها في دعم الاقتصاد الوطني</p>
+          <div class="card-actions">
+            <a href="pdf/الصناعة.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/الصناعة.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 — الطاقة -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="اقتصاد">
+        <div class="pdf-card cd">
+          <div class="icon-wrap"><i class="bi bi-lightning-charge-fill"></i></div>
+          <h5>الطاقة والاقتصاد المصري</h5>
+          <p class="card-desc">مصادر الطاقة المتجددة والتقليدية ودورها في دعم مسيرة التنمية الاقتصادية لمصر</p>
+          <div class="card-actions">
+            <a href="pdf/الطاقة.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/الطاقة.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5 — الطرق والكباري -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="بنية تحتية">
+        <div class="pdf-card ce">
+          <div class="icon-wrap"><i class="bi bi-signpost-2-fill"></i></div>
+          <h5>الطرق والكباري</h5>
+          <p class="card-desc">شبكة الطرق والكباري الحديثة التي تربط أرجاء مصر وتسهم في دعم حركة التنمية والنقل</p>
+          <div class="card-actions">
+            <a href="pdf/الطرق والكباري.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/الطرق والكباري.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6 — المدن الجديدة -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="بنية تحتية">
         <div class="pdf-card cf">
-          <div class="icon-wrap"><i class="bi bi-graph-up-arrow"></i></div>
-          <h5>الاقتصاد والتنمية</h5>
-          <p class="card-desc">السياحة والصناعة والزراعة وقناة السويس — ركائز الاقتصاد المصري ومشاريع التنمية</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s6" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r6')" />
-            <i class="bi bi-search s-icon"></i>
+          <div class="icon-wrap"><i class="bi bi-buildings-fill"></i></div>
+          <h5>المدن الجديدة والعاصمة الإدارية</h5>
+          <p class="card-desc">العاصمة الإدارية الجديدة والمدن العمرانية الحديثة — نقلة حضارية في تاريخ مصر</p>
+          <div class="card-actions">
+            <a href="pdf/المدن الجديدة.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/المدن الجديدة.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
           </div>
-          <div class="search-result" id="r6"></div>
-          <a id="link6" href="PDF_6_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
         </div>
       </div>
 
-      <!-- CARD 7 -->
-      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="ثقافة">
+      <!-- CARD 7 — النقل والطائرات -->
+      <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="بنية تحتية">
         <div class="pdf-card cg">
-          <div class="icon-wrap"><i class="bi bi-people-fill"></i></div>
-          <h5>المجتمع والعادات والتقاليد</h5>
-          <p class="card-desc">أعياد مصر وفلكلورها وعاداتها الأصيلة — روح الشعب المصري وموروثه الشعبي</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s7" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r7')" />
-            <i class="bi bi-search s-icon"></i>
+          <div class="icon-wrap"><i class="bi bi-airplane-fill"></i></div>
+          <h5>النقل والطائرات الحديثة</h5>
+          <p class="card-desc">منظومة النقل الجوي والبري والبحري في مصر وتطويرها لتواكب متطلبات العصر</p>
+          <div class="card-actions">
+            <a href="pdf/النقل والطائرات.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/النقل والطائرات.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
           </div>
-          <div class="search-result" id="r7"></div>
-          <a id="link7" href="PDF_7_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
         </div>
       </div>
 
-      <!-- CARD 8 -->
+      <!-- CARD 8 — قناة السويس -->
       <div class="col-sm-6 col-xl-3 reveal pdf-col" data-cat="اقتصاد">
         <div class="pdf-card ch">
-          <div class="icon-wrap"><i class="bi bi-building-fill"></i></div>
-          <h5>مصر الحديثة ورؤية 2030</h5>
-          <p class="card-desc">العاصمة الإدارية، مشاريع البنية التحتية، والتطور التكنولوجي في مصر الجديدة</p>
-          <div class="pdf-search-wrap">
-            <input type="text" id="s8" placeholder="ابحث في هذا البحث..." oninput="handleSearch(this,'r8')" />
-            <i class="bi bi-search s-icon"></i>
+          <div class="icon-wrap"><i class="bi bi-water"></i></div>
+          <h5>قناة السويس</h5>
+          <p class="card-desc">الممر الملاحي الأهم في العالم — تاريخ القناة وتوسعتها وأثرها الاقتصادي على مصر والعالم</p>
+          <div class="card-actions">
+            <a href="pdf/قناة السويس.pdf" target="_blank" class="btn-pdf-open">
+              <i class="bi bi-eye-fill"></i> عرض
+            </a>
+            <a href="pdf/قناة السويس.pdf" download class="btn-pdf-download">
+              <i class="bi bi-download"></i> تحميل
+            </a>
           </div>
-          <div class="search-result" id="r8"></div>
-          <a id="link8" href="PDF_8_URL" target="_blank" class="btn-pdf-open">
-            <i class="bi bi-file-earmark-pdf-fill"></i> فتح البحث
-          </a>
         </div>
       </div>
 
@@ -924,8 +1056,12 @@
     <div class="section-title reveal">
       <div class="pre-label"><i class="bi bi-images me-1"></i> توثيق مصور</div>
       <h2>معرض الصور</h2>
-      <p>لقطات من الفعاليات والأنشطة المصاحبة للمسابقة</p>
+      <p>أنشطة الطلاب المشاركة في مسابقة <strong>مصر في عيون طلابها</strong> — توثيق لجهود طلابنا المميزين</p>
     </div>
+  </div>
+
+  <div class="container">
+
     <div class="gallery-grid reveal">
       <div class="gallery-item" onclick="openLightbox('imgs/img1.jpeg')"><img src="imgs/img1.jpeg" alt="صورة 1" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
       <div class="gallery-item" onclick="openLightbox('imgs/img2.jpeg')"><img src="imgs/img2.jpeg" alt="صورة 2" loading="lazy"/><div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div></div>
@@ -957,7 +1093,7 @@
 <section class="cta-section reveal">
   <div class="container">
     <h2><i class="bi bi-trophy-fill me-2"></i>مصر تستحق كل فخر واعتزاز</h2>
-    <p>شارك في المسابقة وأظهر حبك لأرض الكنانة</p>
+    <p></p>
     <a href="#pdf-section" class="btn-cta">
       <i class="bi bi-file-earmark-pdf-fill"></i> استعرض الأبحاث
     </a>
@@ -982,10 +1118,20 @@
       </div>
       <div class="footer-links">
         <h6>موضوعات المسابقة</h6>
-        <a href="#pdf-section">الحضارة القديمة</a>
-        <a href="#pdf-section">نهر النيل</a>
-        <a href="#pdf-section">الجغرافيا والتضاريس</a>
-        <a href="#pdf-section">مصر الحديثة</a>
+        <div style="display:flex; gap:24px;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <a href="#pdf-section"><i class="bi bi-tree-fill me-1"></i>الزراعة واستصلاح الأراضي</a>
+            <a href="#pdf-section"><i class="bi bi-heart-pulse-fill me-1"></i>الصحة</a>
+            <a href="#pdf-section"><i class="bi bi-gear-wide-connected me-1"></i>الصناعة</a>
+            <a href="#pdf-section"><i class="bi bi-lightning-charge-fill me-1"></i>الطاقة والاقتصاد المصري</a>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <a href="#pdf-section"><i class="bi bi-signpost-2-fill me-1"></i>الطرق والكباري</a>
+            <a href="#pdf-section"><i class="bi bi-buildings-fill me-1"></i>المدن الجديدة والعاصمة الإدارية</a>
+            <a href="#pdf-section"><i class="bi bi-airplane-fill me-1"></i>النقل والطائرات الحديثة</a>
+            <a href="#pdf-section"><i class="bi bi-water me-1"></i>قناة السويس</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1001,56 +1147,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-/* ════════════════════════════════════════════════════
-   روابط ملفات الـ PDF — غيّر هذه المتغيرات فقط
-   ════════════════════════════════════════════════════ */
-const PDF_1_URL = "pdfs/ancient-egypt.pdf";       // الحضارة المصرية القديمة
-const PDF_2_URL = "pdfs/nile.pdf";                // نهر النيل
-const PDF_3_URL = "pdfs/arts-culture.pdf";        // الفن والثقافة
-const PDF_4_URL = "pdfs/history-eras.pdf";        // مصر عبر العصور
-const PDF_5_URL = "pdfs/geography.pdf";           // الجغرافيا والتضاريس
-const PDF_6_URL = "pdfs/economy.pdf";             // الاقتصاد والتنمية
-const PDF_7_URL = "pdfs/society-traditions.pdf";  // المجتمع والعادات
-const PDF_8_URL = "pdfs/modern-egypt.pdf";        // مصر الحديثة ورؤية 2030
-/* ════════════════════════════════════════════════════ */
-
-// تطبيق الروابط تلقائياً
-(function() {
-  const links = [PDF_1_URL,PDF_2_URL,PDF_3_URL,PDF_4_URL,PDF_5_URL,PDF_6_URL,PDF_7_URL,PDF_8_URL];
-  links.forEach((url, i) => {
-    const el = document.getElementById('link' + (i + 1));
-    if (el) el.href = url;
-  });
-})();
-
-/* كلمات مفتاحية لكل بحث */
-const KEYWORDS = {
-  s1: ["فرعون","هيروغليفي","أهرام","توت","رمسيس","كليوباترا","بردي","معبد","مومياء","سفينكس","خوفو"],
-  s2: ["نيل","فيضان","أسوان","دلتا","مياه","فلاحة","ري","السد العالي","مصب","نبع"],
-  s3: ["موسيقى","سينما","أدب","فنون","نجيب","أم كلثوم","عبدالوهاب","تراث","شعبي","رسم"],
-  s4: ["فاطمي","أيوبي","مملوك","عثماني","إسلام","يونان","روماني","بطليموس","عصر","دولة"],
-  s5: ["صحراء","سيناء","واحة","ساحل","جبل","تضاريس","مناخ","أرض","بيئة","خريطة"],
-  s6: ["سياحة","قناة","صناعة","زراعة","بترول","صادرات","استثمار","تنمية","ميناء","اقتصاد"],
-  s7: ["رمضان","شم النسيم","زفة","تقليد","عادة","فلكلور","أكلة","عيد","مولد","احتفال"],
-  s8: ["عاصمة","إدارية","مشروع","2030","رؤية","طاقة","تكنولوجيا","مترو","طريق","تطوير"]
-};
-
-function handleSearch(input, resultId) {
-  const val = input.value.trim().toLowerCase();
-  const result = document.getElementById(resultId);
-  const idx = resultId.replace('r','');
-  const kws = KEYWORDS['s'+idx] || [];
-  if (!val) { result.textContent=''; result.className='search-result'; return; }
-  const found = kws.some(k => k.includes(val) || val.includes(k));
-  if (found) {
-    result.textContent = '✓ الكلمة موجودة في البحث';
-    result.className = 'search-result found';
-  } else {
-    result.textContent = '← افتح الملف للبحث بداخله';
-    result.className = 'search-result notfound';
-  }
-}
-
 function filterCards(cat, btn) {
   document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
